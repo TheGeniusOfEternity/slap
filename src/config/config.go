@@ -135,7 +135,7 @@ func LoadConfig(filePath string) (*Config, error) {
 		}
 
 		// Only allowed two-condition pattern is after+before
-		if condCount == 2 && !(hasAfter && hasBefore) {
+		if condCount == 2 && (!hasAfter || !hasBefore) {
 			return nil, fmt.Errorf("score rule %s: invalid combination of conditions (only after+before allowed)", rule.Name)
 		}
 
